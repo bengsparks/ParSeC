@@ -16,17 +16,20 @@ class base_expr {
 	 * match a string. Should the string be matched correctly, evaluate MUST
 	 * call parsec::base_expr::set_consumed
 	 */
-	virtual auto evaluate(std::string &) const
+	virtual auto evaluate(std::string&) const
 		-> const std::unique_ptr<ast::base_node> = 0;
 
 	/*
 	 * Returns the string that was set in parsec::base_expr::evaluate.
 	 * This method must be declared virtual, in order for classes such as
-	 * parsec::seq
+	 * parsec::seq to perform their function
 	 */
 	virtual auto consumed() const -> const std::string;
 
-    virtual auto set_consumed(std::string) const -> void;
+	/*
+	 * Set the string that was consumed during the evaluation process
+	 */
+	virtual auto set_consumed(std::string) const -> void;
 
   protected:
 	base_expr() = default;
@@ -34,4 +37,4 @@ class base_expr {
 	mutable std::string __m_consumed;
 };
 
-} // namespace parsec
+} // namespace parsec::expr
