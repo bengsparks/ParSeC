@@ -8,13 +8,12 @@ class loggable {
   public:
 	loggable() = delete;
 
-    logger console;
-
-protected:
+  protected:
 	loggable(const char* name) : console{get(name)}
 	{
 	}
 
+	logger console;
 };
 
 } // namespace parsec::logging
